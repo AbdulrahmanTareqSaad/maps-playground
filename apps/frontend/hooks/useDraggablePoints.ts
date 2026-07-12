@@ -7,7 +7,10 @@ import { createPinIcon } from '@/lib/markerIcons'
 export default function useDraggablePoints(points: DraggablePoint[]) {
   const markersRef = useRef<L.Marker[]>([])
   const pointsRef = useRef(points)
-  pointsRef.current = points
+
+  useEffect(() => {
+    pointsRef.current = points
+  })
 
   useEffect(() => {
     if (typeof window === 'undefined') return

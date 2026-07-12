@@ -99,8 +99,19 @@ export default function Geofencing({
     }
   }, [])
 
+  const listFences = async () => {
+    try {
+      const resp = await fetch('/api/geofence/list')
+      const data = await resp.json()
+      setFences(data.zones || [])
+    } catch {}
+  }
+
   useEffect(() => {
-    listFences()
+    fetch('/api/geofence/list')
+      .then((r) => r.json())
+      .then((data) => setFences(data.zones || []))
+      .catch(() => {})
     const handler = (e: Event) => {
       if (!drawing) return
       const ce = e as CustomEvent<{ lat: number; lng: number }>
@@ -113,14 +124,6 @@ export default function Geofencing({
   const toggleDraw = () => {
     setDrawing((d) => !d)
     if (drawing) setPoints([])
-  }
-
-  const listFences = async () => {
-    try {
-      const resp = await fetch('/api/geofence/list')
-      const data = await resp.json()
-      setFences(data.zones || [])
-    } catch {}
   }
 
   const handleSave = async () => {
