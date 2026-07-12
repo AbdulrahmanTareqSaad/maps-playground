@@ -13,8 +13,9 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'q is required' }, { status: 422 })
   }
   const limit = Math.min(parseInt(searchParams.get('limit') || '5', 10), 10)
+  const lang = searchParams.get('lang') || 'en'
 
-  let url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(q)}&limit=${limit}`
+  let url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(q)}&limit=${limit}&dedupe=1`
 
   const biasLat = searchParams.get('lat')
   const biasLng = searchParams.get('lng')
@@ -30,8 +31,9 @@ export async function GET(req: NextRequest) {
   try {
     const resp = await fetch(url, {
       headers: {
-        'User-Agent': 'MapMaster/1.0',
+        'User-Agent': 'MapsLap/1.0',
         Accept: 'application/json',
+        'Accept-Language': lang,
       },
       signal: AbortSignal.timeout(10000),
     })

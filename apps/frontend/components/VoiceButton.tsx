@@ -20,7 +20,7 @@ import { useTranslation } from '@/lib/i18n'
 type Engine = 'whisper' | 'cohere'
 
 interface VoiceButtonProps {
-  onTranscript: (text: string) => void
+  onTranscript: (text: string, detectedLang?: string) => void
   onError?: (error: string) => void
   size?: number
 }
@@ -208,7 +208,7 @@ export default function VoiceButton({ onTranscript, onError, size = 28 }: VoiceB
 
           const data = await resp.json()
           if (data.text) {
-            onTranscript(data.text.trim())
+            onTranscript(data.text.trim(), data.detectedLang)
           } else {
             throw new Error('No text in response')
           }

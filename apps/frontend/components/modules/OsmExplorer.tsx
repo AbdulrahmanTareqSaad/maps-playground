@@ -158,8 +158,8 @@ export default function OsmExplorer({
     resultMarkersRef.current.forEach((m: any, i: number) => { if (colors_[i]) m.setIcon(createPinIcon(colors_[i])) })
   }, [colors_])
 
-  const buildGeoParams = (q: string, limit: string) => {
-    const params = new URLSearchParams({ q, limit })
+  const buildGeoParams = (q: string, limit: string, overrideLang?: string) => {
+    const params = new URLSearchParams({ q, limit, lang: overrideLang || lang })
     if (userLoc) { params.set('lat', String(userLoc.lat)); params.set('lng', String(userLoc.lng)) }
     return params
   }
@@ -181,11 +181,11 @@ export default function OsmExplorer({
     geocodeTimerRef.current = setTimeout(() => handleGeocode(value), mapDefaults.searchDebounceMs)
   }
 
-  const handleVoiceSearch = async (text: string) => {
+  const handleVoiceSearch = async (text: string, detectedLang?: string) => {
     setSearchQuery(text)
     setGeocodeLoading(true)
     try {
-      const resp = await fetch(`/api/osm/geocode?${buildGeoParams(text, '5')}`)
+      const resp = await fetch(`/api/osm/geocode?${buildGeoParams(text, '5', detectedLang)}`)
       const data = await resp.json()
       const res = data.results || []
       setGeocodeResults(res)
