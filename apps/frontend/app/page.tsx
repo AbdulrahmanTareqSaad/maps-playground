@@ -88,14 +88,14 @@ function Inner() {
     <>
       <div
         className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden p-4"
-        style={{ color: '#e0e0e0', wordBreak: 'break-word' }}
+        style={{ color: '#2d2d2d', wordBreak: 'break-word' }}
       >
         <Suspense fallback={<Fallback t={t} />}>
           <ActiveComp clickedPos={clickedPos} />
         </Suspense>
       </div>
       <div style={{ height: 3, background: 'linear-gradient(90deg, #5238e1, #3d29b0)' }} />
-      <div className="shrink-0 px-4 pb-4" style={{ background: '#0d0d1a' }}>
+      <div className="shrink-0 px-4 pb-4" style={{ background: '#ebe5d8' }}>
         <ClickedPosition pos={clickedPos} />
       </div>
     </>
@@ -105,8 +105,8 @@ function Inner() {
     <div className="flex h-screen flex-col overflow-hidden" dir={dir}>
       <nav className="flex h-[52px] items-center justify-between border-b px-5"
         style={{
-          background: 'linear-gradient(135deg, #16213e, #1a1a2e)',
-          borderColor: '#2d1b8e',
+          background: 'linear-gradient(135deg, #f5f0e8, #f0ebe2)',
+          borderColor: '#d5cfc4',
         }}
       >
         <div className="flex items-center gap-3 shrink-0">
@@ -115,7 +115,7 @@ function Inner() {
               style={{
                 background: 'transparent',
                 border: 'none',
-                color: '#e0e0e0',
+                color: '#2d2d2d',
                 cursor: 'pointer',
                 fontSize: 20,
                 padding: '4px 6px',
@@ -146,25 +146,25 @@ function Inner() {
               onClick={() => setActiveModule(m.id)}
               className="cursor-pointer rounded-md border px-3 py-1.5 text-[13px] shrink-0"
               style={{
-                borderColor: activeModule === m.id ? '#5238e1' : '#2d1b8e',
+                borderColor: activeModule === m.id ? '#5238e1' : '#d5cfc4',
                 background:
                   activeModule === m.id
                     ? 'linear-gradient(135deg, #5238e1, #3d29b0)'
                     : 'transparent',
                 color:
-                  activeModule === m.id ? '#fff' : '#8892a8',
+                  activeModule === m.id ? '#fff' : '#777',
                 boxShadow: activeModule === m.id ? '0 2px 8px rgba(82,56,225,0.3)' : 'none',
               }}
               onMouseEnter={(e) => {
                 if (activeModule !== m.id) {
-                  e.currentTarget.style.background = 'rgba(45,27,142,0.3)'
-                  e.currentTarget.style.color = '#e0e0e0'
+                  e.currentTarget.style.background = 'rgba(82,56,225,0.08)'
+                  e.currentTarget.style.color = '#2d2d2d'
                 }
               }}
               onMouseLeave={(e) => {
                 if (activeModule !== m.id) {
                   e.currentTarget.style.background = 'transparent'
-                  e.currentTarget.style.color = '#8892a8'
+                  e.currentTarget.style.color = '#777'
                 }
               }}
             >
@@ -175,12 +175,12 @@ function Inner() {
             onClick={toggleLang}
             className="cursor-pointer rounded-md border px-2.5 py-1.5 text-[12px] shrink-0 ml-2"
             style={{
-              borderColor: '#2d1b8e', color: '#8892a8', background: 'transparent',
+              borderColor: '#d5cfc4', color: '#777', background: 'transparent',
               transition: 'all 0.2s',
             }}
             title={t('nav.lang')}
-            onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(45,27,142,0.3)'; e.currentTarget.style.color = '#e0e0e0' }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#8892a8' }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(82,56,225,0.08)'; e.currentTarget.style.color = '#2d2d2d' }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#777' }}
           >
             🇺🇸 🇸🇦
           </button>
@@ -213,17 +213,17 @@ function Inner() {
                   display: 'flex',
                   flexDirection: 'column',
                   overflow: 'hidden',
-                  background: 'linear-gradient(180deg, #1a1a2e 0%, #141428 100%)',
+                  background: 'linear-gradient(180deg, #f5f0e8 0%, #ede8dc 100%)',
                   transition: 'transform 0.3s ease-in-out',
                   pointerEvents: sidebarOpen ? 'auto' : 'none',
                 }
                 if (dir === 'rtl') {
                   base.right = 0
-                  base.borderLeft = '1px solid #2d1b8e'
+                  base.borderLeft = '1px solid #d5cfc4'
                   base.transform = sidebarOpen ? 'translateX(0)' : 'translateX(100%)'
                 } else {
                   base.left = 0
-                  base.borderRight = '1px solid #2d1b8e'
+                  base.borderRight = '1px solid #d5cfc4'
                   base.transform = sidebarOpen ? 'translateX(0)' : 'translateX(-100%)'
                 }
                 return base
@@ -236,9 +236,9 @@ function Inner() {
           <aside
             className="flex w-[380px] min-w-[380px] flex-col overflow-hidden"
             style={{
-              borderRight: dir === 'ltr' ? '1px solid #2d1b8e' : 'none',
-              borderLeft: dir === 'rtl' ? '1px solid #2d1b8e' : 'none',
-              background: 'linear-gradient(180deg, #1a1a2e 0%, #141428 100%)',
+              borderRight: dir === 'ltr' ? '1px solid #d5cfc4' : 'none',
+              borderLeft: dir === 'rtl' ? '1px solid #d5cfc4' : 'none',
+              background: 'linear-gradient(180deg, #f5f0e8 0%, #ede8dc 100%)',
             }}
           >
             {sidebarContent}

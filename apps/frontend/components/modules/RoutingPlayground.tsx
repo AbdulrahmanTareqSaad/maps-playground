@@ -139,11 +139,11 @@ export default function RoutingPlayground({
 
   return (
     <div>
-      <h2 style={{ color: '#fff', marginBottom: 4, fontSize: 18, fontWeight: 700 }}>{t('routing.title')}</h2>
-      <p style={{ color: '#8892a8', marginBottom: 16, fontSize: 12, lineHeight: 1.5 }}>{t('routing.desc')}</p>
+      <h2 style={{ color: '#1a1a1a', marginBottom: 4, fontSize: 18, fontWeight: 700 }}>{t('routing.title')}</h2>
+      <p style={{ color: '#777', marginBottom: 16, fontSize: 12, lineHeight: 1.5 }}>{t('routing.desc')}</p>
 
       <div style={{ marginBottom: 12 }}>
-        <label style={{ color: '#aaa', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        <label style={{ color: '#888', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
           {t('routing.start')}
           {clickedPos && (
             <span style={{ marginLeft: 8, fontSize: 10, cursor: 'pointer', color: '#5238e1', fontWeight: 400, textTransform: 'none' }}
@@ -154,14 +154,14 @@ export default function RoutingPlayground({
         </label>
         <div style={{ display: 'flex', gap: 8 }}>
           <input type="number" value={startLat} step="0.0001" onChange={e => setStartLat(+e.target.value)}
-            style={{ flex: 1, minWidth: 0, background: '#16213e', border: '1px solid #2d1b8e', color: '#e0e0e0', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
+            style={{ flex: 1, minWidth: 0, background: '#f0ebe2', border: '1px solid #d5cfc4', color: '#2d2d2d', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
           <input type="number" value={startLng} step="0.0001" onChange={e => setStartLng(+e.target.value)}
-            style={{ flex: 1, minWidth: 0, background: '#16213e', border: '1px solid #2d1b8e', color: '#e0e0e0', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
+            style={{ flex: 1, minWidth: 0, background: '#f0ebe2', border: '1px solid #d5cfc4', color: '#2d2d2d', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
         </div>
       </div>
 
       <div style={{ marginBottom: 12 }}>
-        <label style={{ color: '#aaa', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        <label style={{ color: '#888', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
           {t('routing.destination')}
           {clickedPos && (
             <span style={{ marginLeft: 8, fontSize: 10, cursor: 'pointer', color: '#5238e1', fontWeight: 400, textTransform: 'none' }}
@@ -172,16 +172,16 @@ export default function RoutingPlayground({
         </label>
         <div style={{ display: 'flex', gap: 8 }}>
           <input type="number" value={endLat} step="0.0001" onChange={e => setEndLat(+e.target.value)}
-            style={{ flex: 1, minWidth: 0, background: '#16213e', border: '1px solid #2d1b8e', color: '#e0e0e0', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
+            style={{ flex: 1, minWidth: 0, background: '#f0ebe2', border: '1px solid #d5cfc4', color: '#2d2d2d', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
           <input type="number" value={endLng} step="0.0001" onChange={e => setEndLng(+e.target.value)}
-            style={{ flex: 1, minWidth: 0, background: '#16213e', border: '1px solid #2d1b8e', color: '#e0e0e0', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
+            style={{ flex: 1, minWidth: 0, background: '#f0ebe2', border: '1px solid #d5cfc4', color: '#2d2d2d', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
         </div>
       </div>
 
       <div style={{ marginBottom: 12 }}>
-        <label style={{ color: '#aaa', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{t('routing.profile')}</label>
+        <label style={{ color: '#888', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{t('routing.profile')}</label>
         <select value={profile} onChange={e => setProfile(e.target.value)}
-          style={{ width: '100%', background: '#16213e', border: '1px solid #2d1b8e', color: '#e0e0e0', padding: '8px 10px', fontSize: 12, borderRadius: 6, outline: 'none', transition: 'border-color 0.2s' }}>
+          style={{ width: '100%', background: '#f0ebe2', border: '1px solid #d5cfc4', color: '#2d2d2d', padding: '8px 10px', fontSize: 12, borderRadius: 6, outline: 'none', transition: 'border-color 0.2s' }}>
           <option value="driving-car">{t('routing.car')}</option>
           <option value="cycling-regular">{t('routing.bicycle')}</option>
           <option value="foot-walking">{t('routing.walking')}</option>
@@ -190,7 +190,7 @@ export default function RoutingPlayground({
 
       <button onClick={handleCompare} disabled={loading}
         style={{
-          background: loading ? '#1a2a4a' : 'linear-gradient(135deg, #5238e1, #3d29b0)',
+          background: loading ? '#c9c0b0' : 'linear-gradient(135deg, #5238e1, #3d29b0)',
           color: '#fff', padding: '9px 20px', fontSize: 12, fontWeight: 600, borderRadius: 6,
           cursor: loading ? 'default' : 'pointer', border: 'none', opacity: loading ? 0.6 : 1,
           width: '100%',
@@ -199,11 +199,11 @@ export default function RoutingPlayground({
         {loading ? t('routing.loading') : t('routing.compare')}
       </button>
 
-      <hr style={{ border: 'none', borderTop: '1px solid #2d1b8e', marginTop: 16, marginBottom: 16 }} />
+      <hr style={{ border: 'none', borderTop: '1px solid #d5cfc4', marginTop: 16, marginBottom: 16 }} />
 
-      <h3 style={{ color: '#fff', marginBottom: 8, fontSize: 16, fontWeight: 700 }}>{tEn('routing.isochroneTitle')}</h3>
+      <h3 style={{ color: '#1a1a1a', marginBottom: 8, fontSize: 16, fontWeight: 700 }}>{tEn('routing.isochroneTitle')}</h3>
       <div style={{ marginBottom: 12 }}>
-        <label style={{ color: '#aaa', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        <label style={{ color: '#888', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
           {tEn('routing.center')}
           {clickedPos && (
             <span style={{ marginLeft: 8, fontSize: 10, cursor: 'pointer', color: '#5238e1', fontWeight: 400, textTransform: 'none' }}
@@ -214,13 +214,13 @@ export default function RoutingPlayground({
         </label>
         <div style={{ display: 'flex', gap: 8 }}>
           <input type="number" value={isoLat} step="0.0001" onChange={e => setIsoLat(+e.target.value)}
-            style={{ flex: 1, minWidth: 0, background: '#16213e', border: '1px solid #2d1b8e', color: '#e0e0e0', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
+            style={{ flex: 1, minWidth: 0, background: '#f0ebe2', border: '1px solid #d5cfc4', color: '#2d2d2d', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
           <input type="number" value={isoLng} step="0.0001" onChange={e => setIsoLng(+e.target.value)}
-            style={{ flex: 1, minWidth: 0, background: '#16213e', border: '1px solid #2d1b8e', color: '#e0e0e0', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
+            style={{ flex: 1, minWidth: 0, background: '#f0ebe2', border: '1px solid #d5cfc4', color: '#2d2d2d', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
         </div>
       </div>
       <div style={{ marginBottom: 12 }}>
-        <label style={{ color: '#aaa', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        <label style={{ color: '#888', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
           {tEn('routing.time', { n: isoRange })}
         </label>
         <input type="range" min="1" max="30" step="1" value={isoRange} onChange={e => setIsoRange(+e.target.value)}
@@ -229,7 +229,7 @@ export default function RoutingPlayground({
 
       <button onClick={handleIsochrone} disabled={isoLoading}
         style={{
-          background: isoLoading ? '#0f1a30' : 'linear-gradient(135deg, #9b59b6, #8e44ad)',
+          background: isoLoading ? '#c9c0b0' : 'linear-gradient(135deg, #9b59b6, #8e44ad)',
           color: '#fff', padding: '9px 20px', fontSize: 12, fontWeight: 600, borderRadius: 6,
           cursor: isoLoading ? 'default' : 'pointer', border: 'none', opacity: isoLoading ? 0.6 : 1,
           width: '100%',
@@ -239,15 +239,15 @@ export default function RoutingPlayground({
       </button>
 
       {results && !results.error && (
-        <div style={{ background: '#16213e', padding: 10, marginTop: 8, borderRadius: 8, maxHeight: 200, overflowY: 'auto' }}>
-          <div style={{ color: '#8892a8', fontSize: 11, marginBottom: 6 }}>{t('routing.results')}</div>
+        <div style={{ background: '#f0ebe2', padding: 10, marginTop: 8, borderRadius: 8, maxHeight: 200, overflowY: 'auto' }}>
+          <div style={{ color: '#777', fontSize: 11, marginBottom: 6 }}>{t('routing.results')}</div>
           {results.ors?.features && (
-            <div style={{ color: '#e0e0e0', fontSize: 12, paddingTop: 4, paddingBottom: 4 }}>
+            <div style={{ color: '#2d2d2d', fontSize: 12, paddingTop: 4, paddingBottom: 4 }}>
               {t('routing.ors', { n: ((results.ors.features[0]?.properties?.summary?.distance || 0) / 1000).toFixed(1) })}
             </div>
           )}
           {results.osrm?.routes && (
-            <div style={{ color: '#e0e0e0', fontSize: 12, paddingTop: 4, paddingBottom: 4 }}>
+            <div style={{ color: '#2d2d2d', fontSize: 12, paddingTop: 4, paddingBottom: 4 }}>
               {t('routing.osrm', { n: (results.osrm.routes[0]?.distance / 1000).toFixed(1) })}
             </div>
           )}
@@ -257,7 +257,7 @@ export default function RoutingPlayground({
         </div>
       )}
       {results?.error && (
-        <div style={{ background: '#1a1530', color: '#3d29b0', padding: 10, marginTop: 8, borderRadius: 8, fontSize: 12, border: '1px solid #2d1b8e' }}>
+        <div style={{ background: '#f3e5f5', color: '#5238e1', padding: 10, marginTop: 8, borderRadius: 8, fontSize: 12, border: '1px solid #d5cfc4' }}>
           {results.error}
         </div>
       )}

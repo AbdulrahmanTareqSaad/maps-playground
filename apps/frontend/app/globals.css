@@ -2,13 +2,13 @@
 @import 'leaflet/dist/leaflet.css';
 
 :root {
-  --bg-primary: #1a1a2e;
-  --bg-secondary: #16213e;
-  --bg-input: #16213e;
+  --bg-primary: #f5f0e8;
+  --bg-secondary: #f0ebe2;
+  --bg-input: #f0ebe2;
   --accent: #5238e1;
-  --border: #2d1b8e;
-  --text-primary: #e0e0e0;
-  --text-secondary: #888;
+  --border: #d5cfc4;
+  --text-primary: #2d2d2d;
+  --text-secondary: #777;
   --text-accent: #5238e1;
 }
 
@@ -28,11 +28,11 @@ body {
 
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #2d1b8e; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #3d29b0; }
+::-webkit-scrollbar-thumb { background: #c9c0b0; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #b0a898; }
 
 input:focus, select:focus, textarea:focus {
-  box-shadow: 0 0 0 2px rgba(45, 27, 142, 0.5);
+  box-shadow: 0 0 0 2px rgba(82, 56, 225, 0.2);
   transition: box-shadow 0.2s;
 }
 
@@ -43,7 +43,7 @@ input[type="range"] {
   appearance: none;
   height: 4px;
   border-radius: 2px;
-  background: #2d1b8e;
+  background: #d5cfc4;
   outline: none;
 }
 input[type="range"]::-webkit-slider-thumb {
@@ -53,7 +53,7 @@ input[type="range"]::-webkit-slider-thumb {
   border-radius: 50%;
   background: #5238e1;
   cursor: pointer;
-  box-shadow: 0 0 6px rgba(82, 56, 225, 0.4);
+  box-shadow: 0 0 6px rgba(82, 56, 225, 0.3);
   transition: transform 0.15s;
 }
 input[type="range"]::-webkit-slider-thumb:hover {
@@ -73,18 +73,18 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .map-result-tooltip {
-  background: #1a1a2e !important;
-  border: 1px solid #2d1b8e !important;
-  color: #e0e0e0 !important;
+  background: #f5f0e8 !important;
+  border: 1px solid #d5cfc4 !important;
+  color: #2d2d2d !important;
   font-size: 11px !important;
   font-weight: 500 !important;
   padding: 4px 10px !important;
   border-radius: 6px !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
   white-space: nowrap;
 }
 .map-result-tooltip::before {
-  border-top-color: #2d1b8e !important;
+  border-top-color: #d5cfc4 !important;
 }
 
 .map-pin-pulse {
@@ -93,7 +93,7 @@ input[type="range"]::-moz-range-thumb {
 
 @keyframes pin-pulse {
   0%, 100% { filter: drop-shadow(0 0 0 rgba(82, 56, 225, 0)); }
-  50% { filter: drop-shadow(0 0 8px rgba(82, 56, 225, 0.6)); }
+  50% { filter: drop-shadow(0 0 8px rgba(82, 56, 225, 0.4)); }
 }
 
 @keyframes fade-in {

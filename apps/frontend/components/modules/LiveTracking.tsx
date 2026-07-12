@@ -172,11 +172,11 @@ export default function LiveTracking({
 
   return (
     <div>
-      <h2 style={{ color: '#fff', marginBottom: 4, fontSize: 18, fontWeight: 700 }}>{t('tracking.title')}</h2>
-      <p style={{ color: '#8892a8', marginBottom: 16, fontSize: 12, lineHeight: 1.5 }}>{t('tracking.desc')}</p>
+      <h2 style={{ color: '#1a1a1a', marginBottom: 4, fontSize: 18, fontWeight: 700 }}>{t('tracking.title')}</h2>
+      <p style={{ color: '#777', marginBottom: 16, fontSize: 12, lineHeight: 1.5 }}>{t('tracking.desc')}</p>
 
       <div style={{ marginBottom: 12 }}>
-        <label style={{ color: '#aaa', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        <label style={{ color: '#888', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
           {t('tracking.start')}
           {clickedPos && (
             <span style={{ marginLeft: 8, fontSize: 10, cursor: 'pointer', color: '#5238e1', fontWeight: 400, textTransform: 'none' }}
@@ -187,14 +187,14 @@ export default function LiveTracking({
         </label>
         <div style={{ display: 'flex', gap: 8 }}>
           <input type="number" value={startLat} step="0.0001" onChange={e => setStartLat(+e.target.value)}
-            style={{ flex: 1, minWidth: 0, background: '#16213e', border: '1px solid #2d1b8e', color: '#e0e0e0', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
+            style={{ flex: 1, minWidth: 0, background: '#f0ebe2', border: '1px solid #d5cfc4', color: '#2d2d2d', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
           <input type="number" value={startLng} step="0.0001" onChange={e => setStartLng(+e.target.value)}
-            style={{ flex: 1, minWidth: 0, background: '#16213e', border: '1px solid #2d1b8e', color: '#e0e0e0', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
+            style={{ flex: 1, minWidth: 0, background: '#f0ebe2', border: '1px solid #d5cfc4', color: '#2d2d2d', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
         </div>
       </div>
 
       <div style={{ marginBottom: 12 }}>
-        <label style={{ color: '#aaa', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        <label style={{ color: '#888', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
           {t('tracking.destination')}
           {clickedPos && (
             <span style={{ marginLeft: 8, fontSize: 10, cursor: 'pointer', color: '#5238e1', fontWeight: 400, textTransform: 'none' }}
@@ -205,20 +205,20 @@ export default function LiveTracking({
         </label>
         <div style={{ display: 'flex', gap: 8 }}>
           <input type="number" value={endLat} step="0.0001" onChange={e => setEndLat(+e.target.value)}
-            style={{ flex: 1, minWidth: 0, background: '#16213e', border: '1px solid #2d1b8e', color: '#e0e0e0', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
+            style={{ flex: 1, minWidth: 0, background: '#f0ebe2', border: '1px solid #d5cfc4', color: '#2d2d2d', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
           <input type="number" value={endLng} step="0.0001" onChange={e => setEndLng(+e.target.value)}
-            style={{ flex: 1, minWidth: 0, background: '#16213e', border: '1px solid #2d1b8e', color: '#e0e0e0', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
+            style={{ flex: 1, minWidth: 0, background: '#f0ebe2', border: '1px solid #d5cfc4', color: '#2d2d2d', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
         </div>
       </div>
 
       <div style={{ marginBottom: 12 }}>
-        <label style={{ color: '#aaa', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{t('tracking.label')}</label>
+        <label style={{ color: '#888', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{t('tracking.label')}</label>
         <input type="text" value={label} onChange={e => setLabel(e.target.value)}
-          style={{ width: '100%', background: '#16213e', border: '1px solid #2d1b8e', color: '#e0e0e0', padding: '8px 10px', fontSize: 12, borderRadius: 6, outline: 'none', transition: 'border-color 0.2s' }} />
+          style={{ width: '100%', background: '#f0ebe2', border: '1px solid #d5cfc4', color: '#2d2d2d', padding: '8px 10px', fontSize: 12, borderRadius: 6, outline: 'none', transition: 'border-color 0.2s' }} />
       </div>
 
       <div style={{ marginBottom: 12 }}>
-        <label style={{ color: '#aaa', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        <label style={{ color: '#888', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
           {t('tracking.speed', { n: speed })}
         </label>
         <input type="range" min="0.5" max="10" step="0.5" value={speed} onChange={e => setSpeed(+e.target.value)}
@@ -228,7 +228,7 @@ export default function LiveTracking({
       {connState === 'idle' && (
         <button onClick={handleStart} disabled={loading}
           style={{
-            background: loading ? '#1a2a4a' : 'linear-gradient(135deg, #5238e1, #3d29b0)',
+            background: loading ? '#c9c0b0' : 'linear-gradient(135deg, #5238e1, #3d29b0)',
             color: '#fff', padding: '9px 20px', fontSize: 12, fontWeight: 600, borderRadius: 6,
             cursor: loading ? 'default' : 'pointer', border: 'none', opacity: loading ? 0.6 : 1,
             width: '100%',
@@ -239,33 +239,33 @@ export default function LiveTracking({
       )}
 
       {connState === 'created' && (
-        <div style={{ background: 'linear-gradient(135deg, #0e2a1a, #1a3a22)', color: '#7ddfa0', padding: 10, marginBottom: 8, borderRadius: 8, fontSize: 12, border: '1px solid #1e4a2a' }}>
+        <div style={{ background: 'linear-gradient(135deg, #e8f5e9, #c8e6c9)', color: '#2e7d32', padding: 10, marginBottom: 8, borderRadius: 8, fontSize: 12, border: '1px solid #a5d6a7' }}>
           <span style={{ fontWeight: 700 }}>{t('tracking.created')}</span>
-          <span style={{ color: '#a0e0a0' }}> {t('tracking.startingStream')}</span>
+          <span style={{ color: '#43a047' }}> {t('tracking.startingStream')}</span>
         </div>
       )}
 
       {connState === 'connected' && (
-        <div style={{ background: '#16213e', padding: 10, marginBottom: 8, borderRadius: 8, fontSize: 12, border: '1px solid #1a2a4a' }}>
+        <div style={{ background: '#f0ebe2', padding: 10, marginBottom: 8, borderRadius: 8, fontSize: 12, border: '1px solid #c9c0b0' }}>
           <div style={{ color: '#27ae60', fontWeight: 600 }}>{t('tracking.connected')}</div>
         </div>
       )}
 
       {connState === 'arrived' && (
-        <div style={{ background: 'linear-gradient(135deg, #0e2a1a, #1a3a22)', color: '#7ddfa0', padding: 10, marginBottom: 8, borderRadius: 8, fontSize: 12, fontWeight: 600, border: '1px solid #1e4a2a' }}>
+        <div style={{ background: 'linear-gradient(135deg, #e8f5e9, #c8e6c9)', color: '#2e7d32', padding: 10, marginBottom: 8, borderRadius: 8, fontSize: 12, fontWeight: 600, border: '1px solid #a5d6a7' }}>
           {t('tracking.arrived')}
         </div>
       )}
 
       {connState.startsWith('error') && (
-        <div style={{ background: '#2a1520', color: '#5238e1', padding: 10, marginBottom: 8, borderRadius: 8, fontSize: 12, border: '1px solid #4a2030' }}>
+        <div style={{ background: '#fce4ec', color: '#5238e1', padding: 10, marginBottom: 8, borderRadius: 8, fontSize: 12, border: '1px solid #ef9a9a' }}>
           {connState === 'error' ? t('tracking.connectionError') : connState.slice(6)}
         </div>
       )}
 
       {apiToken && connState !== 'idle' && (
-        <div style={{ background: '#0d1b2a', border: '1px solid #1a4a80', padding: 10, marginTop: 8, borderRadius: 8, fontSize: 12 }}>
-          <div style={{ color: '#8892a8', marginBottom: 4, fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        <div style={{ background: '#e8eaf6', border: '1px solid #90caf9', padding: 10, marginTop: 8, borderRadius: 8, fontSize: 12 }}>
+          <div style={{ color: '#777', marginBottom: 4, fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             {t('tracking.deviceApiToken')}
           </div>
           <div style={{ color: '#5238e1', fontFamily: 'monospace', fontSize: 10, wordBreak: 'break-all', marginBottom: 6 }}>
@@ -274,7 +274,7 @@ export default function LiveTracking({
           <div style={{ color: '#5a6a8a', fontSize: 10 }}>
             {t('tracking.postTo', { n: '/api/tracking/report' })}
           </div>
-          <pre style={{ color: '#a0a0c0', fontSize: 10, marginTop: 4, whiteSpace: 'pre-wrap', background: '#0a0a1a', padding: 8, borderRadius: 4 }}>
+          <pre style={{ color: '#666', fontSize: 10, marginTop: 4, whiteSpace: 'pre-wrap', background: '#f5f5f5', padding: 8, borderRadius: 4 }}>
             {JSON.stringify({ tracker_id: trackerId, api_token: apiToken, lat: 25.2048, lng: 55.2708 }, null, 2)}
           </pre>
         </div>

@@ -188,34 +188,34 @@ export default function OsmExplorer({
 
   return (
     <div>
-      <h2 style={{ color: '#fff', marginBottom: 4, fontSize: 18, fontWeight: 700 }}>{t('osm.title')}</h2>
-      <p style={{ color: '#8892a8', marginBottom: 16, fontSize: 12, lineHeight: 1.5 }}>{t('osm.desc')}</p>
+      <h2 style={{ color: '#1a1a1a', marginBottom: 4, fontSize: 18, fontWeight: 700 }}>{t('osm.title')}</h2>
+      <p style={{ color: '#777', marginBottom: 16, fontSize: 12, lineHeight: 1.5 }}>{t('osm.desc')}</p>
 
       <div style={{ marginBottom: 12, position: 'relative' }}>
-        <label style={{ color: '#aaa', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        <label style={{ color: '#888', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
           {t('osm.searchLocation')}
         </label>
         <input type="text" value={searchQuery} placeholder={t('osm.searchPlaceholder')}
           onChange={e => handleSearchQueryChange(e.target.value)}
-          style={{ width: '100%', background: '#16213e', border: '1px solid #2d1b8e', color: '#e0e0e0', padding: '8px 10px', fontSize: 12, borderRadius: 6, outline: 'none', boxSizing: 'border-box', transition: 'border-color 0.2s' }} />
+          style={{ width: '100%', background: '#f0ebe2', border: '1px solid #d5cfc4', color: '#2d2d2d', padding: '8px 10px', fontSize: 12, borderRadius: 6, outline: 'none', boxSizing: 'border-box', transition: 'border-color 0.2s' }} />
         {geocodeResults.length > 0 && (
           <div style={{
             position: 'absolute', top: '100%', left: 0, right: 0, zIndex: 60,
-            background: '#16213e', border: '1px solid #2d1b8e', borderRadius: 6, marginTop: 4,
+            background: '#f0ebe2', border: '1px solid #d5cfc4', borderRadius: 6, marginTop: 4,
             maxHeight: 200, overflowY: 'auto', boxShadow: '0 4px 12px rgba(0,0,0,0.4)',
           }}>
             {geocodeResults.map((r: any, i: number) => (
               <div key={i} onClick={() => handleSelectGeocode(r)}
                 style={{
-                  padding: '8px 10px', cursor: 'pointer', fontSize: 11, color: '#e0e0e0',
-                  borderBottom: i < geocodeResults.length - 1 ? '1px solid #2d1b8e' : 'none',
+                  padding: '8px 10px', cursor: 'pointer', fontSize: 11, color: '#2d2d2d',
+                  borderBottom: i < geocodeResults.length - 1 ? '1px solid #d5cfc4' : 'none',
                   transition: 'background 0.15s',
                 }}
-                onMouseEnter={e => e.currentTarget.style.background = 'rgba(45,27,142,0.5)'}
+                onMouseEnter={e => e.currentTarget.style.background = 'rgba(82,56,225,0.1)'}
                 onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
               >
                 <div style={{ fontWeight: 500, marginBottom: 2 }}>{r.displayName?.split(',')[0]}</div>
-                <div style={{ color: '#5a6a8a', fontSize: 10 }}>
+                <div style={{ color: '#999', fontSize: 10 }}>
                   {r.lat?.toFixed(4)}, {r.lon?.toFixed(4)} — {r.category}{r.type ? ` / ${r.type}` : ''}
                 </div>
               </div>
@@ -223,12 +223,12 @@ export default function OsmExplorer({
           </div>
         )}
         {geocodeLoading && (
-          <div style={{ color: '#5a6a8a', fontSize: 11, marginTop: 4 }}>{t('osm.searching')}</div>
+          <div style={{ color: '#999', fontSize: 11, marginTop: 4 }}>{t('osm.searching')}</div>
         )}
       </div>
 
       <div style={{ marginBottom: 12 }}>
-        <label style={{ color: '#aaa', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        <label style={{ color: '#888', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
           {t('osm.location')}
           {clickedPos && (
             <span style={{ marginLeft: 8, fontSize: 10, cursor: 'pointer', color: '#5238e1', fontWeight: 400, textTransform: 'none' }}
@@ -239,14 +239,14 @@ export default function OsmExplorer({
         </label>
         <div style={{ display: 'flex', gap: 8 }}>
           <input type="number" value={lat} step="0.0001" onChange={e => setLat(+e.target.value)}
-            style={{ flex: 1, minWidth: 0, background: '#16213e', border: '1px solid #2d1b8e', color: '#e0e0e0', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, boxSizing: 'border-box', transition: 'border-color 0.2s' }} />
+            style={{ flex: 1, minWidth: 0, background: '#f0ebe2', border: '1px solid #d5cfc4', color: '#2d2d2d', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, boxSizing: 'border-box', transition: 'border-color 0.2s' }} />
           <input type="number" value={lng} step="0.0001" onChange={e => setLng(+e.target.value)}
-            style={{ flex: 1, minWidth: 0, background: '#16213e', border: '1px solid #2d1b8e', color: '#e0e0e0', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, boxSizing: 'border-box', transition: 'border-color 0.2s' }} />
+            style={{ flex: 1, minWidth: 0, background: '#f0ebe2', border: '1px solid #d5cfc4', color: '#2d2d2d', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, boxSizing: 'border-box', transition: 'border-color 0.2s' }} />
         </div>
       </div>
 
       <div style={{ marginBottom: 12 }}>
-        <label style={{ color: '#aaa', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        <label style={{ color: '#888', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
           {t('osm.radius', { n: radius.toFixed(1) })}
         </label>
         <input type="range" min="0.1" max="5" step="0.1" value={radius} onChange={e => setRadius(+e.target.value)}
@@ -254,24 +254,24 @@ export default function OsmExplorer({
       </div>
 
       <div style={{ marginBottom: 12 }}>
-        <label style={{ color: '#aaa', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{t('osm.amenity')}</label>
+        <label style={{ color: '#888', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{t('osm.amenity')}</label>
         <select value={amenity} onChange={e => setAmenity(e.target.value)}
-          style={{ width: '100%', background: '#16213e', border: '1px solid #2d1b8e', color: '#e0e0e0', padding: '8px 10px', fontSize: 12, borderRadius: 6, outline: 'none', transition: 'border-color 0.2s' }}>
+          style={{ width: '100%', background: '#f0ebe2', border: '1px solid #d5cfc4', color: '#2d2d2d', padding: '8px 10px', fontSize: 12, borderRadius: 6, outline: 'none', transition: 'border-color 0.2s' }}>
           {amenityList.map(a => <option key={a.value} value={a.value}>{t('osm.' + a.labelKey)}</option>)}
         </select>
       </div>
 
       {amenity === 'custom' && (
         <div style={{ marginBottom: 12 }}>
-          <label style={{ color: '#aaa', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{t('osm.overpassQl')}</label>
+          <label style={{ color: '#888', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{t('osm.overpassQl')}</label>
           <textarea value={customQuery} onChange={e => setCustomQuery(e.target.value)} rows={3}
-            style={{ width: '100%', background: '#16213e', border: '1px solid #2d1b8e', color: '#e0e0e0', padding: '8px 10px', fontSize: 12, borderRadius: 6, outline: 'none', fontFamily: 'monospace', transition: 'border-color 0.2s' }} />
+            style={{ width: '100%', background: '#f0ebe2', border: '1px solid #d5cfc4', color: '#2d2d2d', padding: '8px 10px', fontSize: 12, borderRadius: 6, outline: 'none', fontFamily: 'monospace', transition: 'border-color 0.2s' }} />
         </div>
       )}
 
       <button onClick={handleSearch} disabled={loading}
         style={{
-          background: loading ? '#1a2a4a' : 'linear-gradient(135deg, #5238e1, #3d29b0)',
+          background: loading ? '#c9c0b0' : 'linear-gradient(135deg, #5238e1, #3d29b0)',
           color: '#fff', padding: '9px 20px', fontSize: 12, fontWeight: 600, borderRadius: 6,
           cursor: loading ? 'default' : 'pointer', border: 'none', opacity: loading ? 0.6 : 1,
           width: '100%',
@@ -281,8 +281,8 @@ export default function OsmExplorer({
       </button>
 
       {results && (
-        <div style={{ background: '#16213e', padding: 10, marginTop: 8, borderRadius: 8, maxHeight: 200, overflowY: 'auto' }}>
-          <div style={{ color: '#8892a8', fontSize: 11, marginBottom: 6 }}>
+        <div style={{ background: '#f0ebe2', padding: 10, marginTop: 8, borderRadius: 8, maxHeight: 200, overflowY: 'auto' }}>
+          <div style={{ color: '#777', fontSize: 11, marginBottom: 6 }}>
             {results.error ? t('osm.error') : t('osm.results', { n: results.features?.length || 0 })}
           </div>
           {results.error && <div style={{ color: '#5238e1', fontSize: 11 }}>{results.error}</div>}
@@ -297,13 +297,13 @@ export default function OsmExplorer({
               onMouseLeave={() => setHoveredResult(null)}
               style={{
                 padding: '7px 8px', fontSize: 12, cursor: 'pointer',
-                background: selectedResult === i ? '#2d1b8e' : hoveredResult === i ? 'rgba(45,27,142,0.5)' : 'transparent',
+                background: selectedResult === i ? '#d5cfc4' : hoveredResult === i ? 'rgba(82,56,225,0.1)' : 'transparent',
                 borderRadius: 4, marginBottom: 2,
                 transition: 'background 0.15s',
               }}>
               <div style={{
                 display: 'flex', alignItems: 'center', gap: 6,
-                color: selectedResult === i ? '#5238e1' : '#e0e0e0',
+                color: selectedResult === i ? '#5238e1' : '#2d2d2d',
                 fontWeight: selectedResult === i ? 600 : 400,
               }}>
                 <span style={{
@@ -313,7 +313,7 @@ export default function OsmExplorer({
                 }} />
                 {el.tags?.name || el.tags?.amenity || el.type}
               </div>
-              <div style={{ color: '#5a6a8a', fontSize: 10, marginTop: 1, marginLeft: 12 }}>
+              <div style={{ color: '#999', fontSize: 10, marginTop: 1, marginLeft: 12 }}>
                 {el.lat?.toFixed(4)}, {el.lon?.toFixed(4)}
               </div>
             </div>

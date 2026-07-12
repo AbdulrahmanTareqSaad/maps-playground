@@ -28,8 +28,8 @@ export default function MapStyles() {
 
   return (
     <div>
-      <h2 style={{ color: '#fff', marginBottom: 4, fontSize: 18, fontWeight: 700 }}>{t('styles.title')}</h2>
-      <p style={{ color: '#888', marginBottom: 16, fontSize: 12 }}>{t('styles.desc')}</p>
+      <h2 style={{ color: '#1a1a1a', marginBottom: 4, fontSize: 18, fontWeight: 700 }}>{t('styles.title')}</h2>
+      <p style={{ color: '#777', marginBottom: 16, fontSize: 12 }}>{t('styles.desc')}</p>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
         {styles.map((s) => (
@@ -41,12 +41,12 @@ export default function MapStyles() {
               borderRadius: 8,
               cursor: 'pointer',
               textAlign: 'center',
-              background: '#16213e',
-              border: activeStyle === s.id ? '1px solid #5238e1' : '1px solid #2d1b8e',
+              background: '#f0ebe2',
+              border: activeStyle === s.id ? '1px solid #5238e1' : '1px solid #d5cfc4',
             }}
           >
-            <div style={{ color: '#e0e0e0', fontSize: 11, fontWeight: 600 }}>{s.name}</div>
-            <div style={{ color: '#888', fontSize: 9, marginTop: 2 }}>{s.type}</div>
+            <div style={{ color: '#2d2d2d', fontSize: 11, fontWeight: 600 }}>{s.name}</div>
+            <div style={{ color: '#777', fontSize: 9, marginTop: 2 }}>{s.type}</div>
             <span style={{
               display: 'inline-block',
               padding: '2px 6px',

@@ -162,17 +162,17 @@ export default function Geofencing({
 
   return (
     <div>
-      <h2 style={{ color: '#fff', marginBottom: 4, fontSize: 18, fontWeight: 700 }}>{t('geofence.title')}</h2>
-      <p style={{ color: '#8892a8', marginBottom: 16, fontSize: 12, lineHeight: 1.5 }}>{t('geofence.desc')}</p>
+      <h2 style={{ color: '#1a1a1a', marginBottom: 4, fontSize: 18, fontWeight: 700 }}>{t('geofence.title')}</h2>
+      <p style={{ color: '#777', marginBottom: 16, fontSize: 12, lineHeight: 1.5 }}>{t('geofence.desc')}</p>
 
       <div style={{ marginBottom: 12 }}>
-        <label style={{ color: '#aaa', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{t('geofence.zoneName')}</label>
+        <label style={{ color: '#888', marginBottom: 4, display: 'block', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{t('geofence.zoneName')}</label>
         <input type="text" value={fenceName} onChange={e => setFenceName(e.target.value)}
-          style={{ width: '100%', background: '#16213e', border: '1px solid #2d1b8e', color: '#e0e0e0', padding: '8px 10px', fontSize: 12, borderRadius: 6, outline: 'none', transition: 'border-color 0.2s' }} />
+          style={{ width: '100%', background: '#f0ebe2', border: '1px solid #d5cfc4', color: '#2d2d2d', padding: '8px 10px', fontSize: 12, borderRadius: 6, outline: 'none', transition: 'border-color 0.2s' }} />
       </div>
 
       <p style={{
-        color: drawing ? '#8b7cf0' : '#8892a8', fontSize: 11, marginBottom: 8,
+        color: drawing ? '#5238e1' : '#777', fontSize: 11, marginBottom: 8,
         background: drawing ? 'rgba(139,124,240,0.08)' : 'transparent',
         padding: '6px 8px', borderRadius: 6,
       }}>
@@ -203,11 +203,11 @@ export default function Geofencing({
       </div>
 
       {fences.length > 0 && (
-        <div style={{ background: '#16213e', padding: 10, marginTop: 8, borderRadius: 8, maxHeight: 120, overflowY: 'auto' }}>
-          <div style={{ color: '#8892a8', fontSize: 11, marginBottom: 6 }}>{t('geofence.savedZones')}</div>
+        <div style={{ background: '#f0ebe2', padding: 10, marginTop: 8, borderRadius: 8, maxHeight: 120, overflowY: 'auto' }}>
+          <div style={{ color: '#777', fontSize: 11, marginBottom: 6 }}>{t('geofence.savedZones')}</div>
           {fences.map((f: any) => (
-            <div key={f.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #2d1b8e', fontSize: 12, paddingTop: 4, paddingBottom: 4 }}>
-              <span style={{ color: '#e0e0e0' }}>{f.name}</span>
+            <div key={f.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #d5cfc4', fontSize: 12, paddingTop: 4, paddingBottom: 4 }}>
+              <span style={{ color: '#2d2d2d' }}>{f.name}</span>
               <button onClick={() => handleDelete(f.id)} style={{ color: '#5238e1', background: 'none', border: 'none', cursor: 'pointer', fontSize: 10 }}>
                 {t('geofence.delete')}
               </button>
@@ -216,13 +216,13 @@ export default function Geofencing({
         </div>
       )}
 
-      <hr style={{ border: 'none', borderTop: '1px solid #2d1b8e', marginTop: 16, marginBottom: 16 }} />
-      <h3 style={{ color: '#fff', marginBottom: 8, fontSize: 14, fontWeight: 700 }}>{t('geofence.checkPoint')}</h3>
+      <hr style={{ border: 'none', borderTop: '1px solid #d5cfc4', marginTop: 16, marginBottom: 16 }} />
+      <h3 style={{ color: '#1a1a1a', marginBottom: 8, fontSize: 14, fontWeight: 700 }}>{t('geofence.checkPoint')}</h3>
       <div style={{ display: 'flex', gap: 8, marginBottom: 8 }}>
         <input type="number" value={checkLat} step="0.0001" onChange={e => setCheckLat(+e.target.value)}
-          style={{ flex: 1, minWidth: 0, background: '#16213e', border: '1px solid #2d1b8e', color: '#e0e0e0', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
+          style={{ flex: 1, minWidth: 0, background: '#f0ebe2', border: '1px solid #d5cfc4', color: '#2d2d2d', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
         <input type="number" value={checkLng} step="0.0001" onChange={e => setCheckLng(+e.target.value)}
-          style={{ flex: 1, minWidth: 0, background: '#16213e', border: '1px solid #2d1b8e', color: '#e0e0e0', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
+          style={{ flex: 1, minWidth: 0, background: '#f0ebe2', border: '1px solid #d5cfc4', color: '#2d2d2d', padding: '8px 6px', fontSize: 12, borderRadius: 6, outline: 'none', lineHeight: 1, transition: 'border-color 0.2s' }} />
       </div>
 
       <button onClick={handleCheck}
@@ -238,9 +238,9 @@ export default function Geofencing({
       {checkResult && (
         <div className="slide-in" style={{
           padding: 10, marginTop: 8, borderRadius: 8, fontSize: 12, fontWeight: 600, textAlign: 'center',
-          background: checkResult.inside ? 'linear-gradient(135deg, #0e2a1a, #1a3a22)' : 'linear-gradient(135deg, #1a1530, #3d1a1a)',
-          color: checkResult.inside ? '#7ddfa0' : '#5238e1',
-          border: checkResult.inside ? '1px solid #1e4a2a' : '1px solid #2d1b8e',
+          background: checkResult.inside ? 'linear-gradient(135deg, #e8f5e9, #c8e6c9)' : 'linear-gradient(135deg, #f3e5f5, #ffcdd2)',
+          color: checkResult.inside ? '#2e7d32' : '#5238e1',
+          border: checkResult.inside ? '1px solid #a5d6a7' : '1px solid #d5cfc4',
         }}>
           {checkResult.inside ? t('geofence.inside', { n: checkResult.zone }) : t('geofence.outside')}
         </div>
