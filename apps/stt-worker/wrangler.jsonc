@@ -1,7 +1,7 @@
 {
   "name": "stt-worker",
   "account_id": "f6a568fb2dea392dc82f7a93548e0a89",
-  "compatibility_date": "2025-04-01",
+  "compatibility_date": "2026-07-12",
   "compatibility_flags": [
     "nodejs_compat"
   ],
