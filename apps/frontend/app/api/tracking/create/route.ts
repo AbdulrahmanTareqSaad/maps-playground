@@ -1,3 +1,9 @@
+/**
+ * POST /api/tracking/create
+ * Creates a new vehicle tracker in the in-memory tracking store.
+ * Body params: start_lat, start_lng, end_lat, end_lng (required), label, speed, route_path.
+ * Returns: the created tracker object including its id and API token.
+ */
 import { NextRequest, NextResponse } from 'next/server'
 import { createTracker } from '@/lib/tracking-store'
 

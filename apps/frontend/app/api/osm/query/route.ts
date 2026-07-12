@@ -1,16 +1,22 @@
+/**
+ * GET /api/osm/query
+ * Queries the Overpass API for POIs (cafes, fuel, parking, etc.) within a bounding box.
+ * Query params: lat, lng (required), radius_km, amenity, custom_query.
+ * Returns: { count, features: Array<{ id, type, lat, lon, tags }>, bbox }
+ */
 import { NextRequest, NextResponse } from 'next/server'
 
 const QUERY_TEMPLATES: Record<string, string> = {
-  cafe: '[out:json];node["amenity"~"cafe|restaurant|fast_food"]({bbox});out geom;',
-  fuel: '[out:json];node["amenity"="fuel"]({bbox});out geom;',
-  parking: '[out:json];node["amenity"="parking"]({bbox});out geom;',
-  pharmacy: '[out:json];node["amenity"="pharmacy"]({bbox});out geom;',
-  school: '[out:json];node["amenity"~"school|kindergarten|university"]({bbox});out geom;',
-  hospital: '[out:json];node["amenity"="hospital"]({bbox});out geom;',
-  atm: '[out:json];node["amenity"="atm"]({bbox});out geom;',
-  bus_stop: '[out:json];node["highway"="bus_stop"]({bbox});out geom;',
-  charging: '[out:json];node["amenity"="charging_station"]({bbox});out geom;',
-  custom: '{custom_query}',
+  cafe: '[out:json][timeout:25];node["amenity"~"cafe|restaurant|fast_food"]({bbox});out geom;',
+  fuel: '[out:json][timeout:25];node["amenity"="fuel"]({bbox});out geom;',
+  parking: '[out:json][timeout:25];node["amenity"="parking"]({bbox});out geom;',
+  pharmacy: '[out:json][timeout:25];node["amenity"="pharmacy"]({bbox});out geom;',
+  school: '[out:json][timeout:25];node["amenity"~"school|kindergarten|university"]({bbox});out geom;',
+  hospital: '[out:json][timeout:25];node["amenity"="hospital"]({bbox});out geom;',
+  atm: '[out:json][timeout:25];node["amenity"="atm"]({bbox});out geom;',
+  bus_stop: '[out:json][timeout:25];node["highway"="bus_stop"]({bbox});out geom;',
+  charging: '[out:json][timeout:25];node["amenity"="charging_station"]({bbox});out geom;',
+  custom: '[out:json][timeout:25];{custom_query}',
 }
 
 export async function GET(req: NextRequest) {
@@ -49,10 +55,13 @@ export async function GET(req: NextRequest) {
 
   try {
     const url = `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`
+    const controller = new AbortController()
+    const timer = setTimeout(() => controller.abort(), 60000)
     const resp = await fetch(url, {
       headers: { 'User-Agent': 'MapMaster/1.0', Accept: 'application/json' },
-      signal: AbortSignal.timeout(30000),
+      signal: controller.signal,
     })
+    clearTimeout(timer)
 
     if (!resp.ok) {
       const body = await resp.text()

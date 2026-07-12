@@ -1,3 +1,9 @@
+/**
+ * GET /api/routing/ors
+ * Proxies a directions request to the OpenRouteService Directions API.
+ * Query params: start, end (lat,lng), profile (e.g. "driving-car").
+ * Requires ORS_API_KEY env var. Returns: GeoJSON route response.
+ */
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(req: NextRequest) {

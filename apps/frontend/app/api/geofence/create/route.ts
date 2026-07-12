@@ -1,3 +1,9 @@
+/**
+ * POST /api/geofence/create
+ * Creates a new geofence zone in the in-memory store.
+ * Body params: name (required), polygon (required, array of 3+ [lng,lat] points).
+ * Returns: the created zone object with its ID.
+ */
 import { NextRequest, NextResponse } from 'next/server'
 import { createZone } from '@/lib/geofence-store'
 

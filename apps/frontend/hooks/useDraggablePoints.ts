@@ -1,11 +1,19 @@
+/**
+ * React hook that renders and manages draggable Leaflet map markers.
+ * Syncs marker positions with state, supports tooltips, and listens
+ * for double-click events to reposition the first point.
+ * Exports: useDraggablePoints (default)
+ */
 'use client'
 
 import { useEffect, useRef } from 'react'
 import type { DraggablePoint } from '@/types'
 import { createPinIcon } from '@/lib/markerIcons'
+import { getMap, getLeaflet } from '@/lib/map'
+import { mapDefaults } from '@/lib/theme'
 
 export default function useDraggablePoints(points: DraggablePoint[]) {
-  const markersRef = useRef<L.Marker[]>([])
+  const markersRef = useRef<any[]>([])
   const pointsRef = useRef(points)
 
   useEffect(() => {
@@ -13,12 +21,11 @@ export default function useDraggablePoints(points: DraggablePoint[]) {
   })
 
   useEffect(() => {
-    if (typeof window === 'undefined') return
-    const L = window.L
-    const map = (window as any).__map as L.Map | undefined
+    const L = getLeaflet()
+    const map = getMap()
     if (!L || !map) return
 
-    markersRef.current.forEach((m) => map.removeLayer(m))
+    markersRef.current.forEach((m: any) => map.removeLayer(m))
     markersRef.current = []
 
     const makeIcon = (color: string) => createPinIcon(color, true)
@@ -33,21 +40,21 @@ export default function useDraggablePoints(points: DraggablePoint[]) {
         marker.bindTooltip(p.label, { permanent: true, direction: 'top' })
       marker.on('dragend', () => {
         const pos = marker.getLatLng()
-        p.setLat(parseFloat(pos.lat.toFixed(6)))
-        p.setLng(parseFloat(pos.lng.toFixed(6)))
+        p.setLat(parseFloat(pos.lat.toFixed(mapDefaults.latLngPrecision)))
+        p.setLng(parseFloat(pos.lng.toFixed(mapDefaults.latLngPrecision)))
       })
       markersRef.current.push(marker)
     })
 
     if (markersRef.current.length >= 2) {
       map.fitBounds(
-        L.latLngBounds(markersRef.current.map((m) => m.getLatLng())),
-        { padding: [50, 50], maxZoom: 14 }
+        L.latLngBounds(markersRef.current.map((m: any) => m.getLatLng())),
+        { padding: mapDefaults.fitBoundsPadding, maxZoom: mapDefaults.initialZoom }
       )
     }
 
     return () => {
-      markersRef.current.forEach((m) => map.removeLayer(m))
+      markersRef.current.forEach((m: any) => map.removeLayer(m))
       markersRef.current = []
     }
   }, [])
@@ -63,8 +70,8 @@ export default function useDraggablePoints(points: DraggablePoint[]) {
       const ce = e as CustomEvent<{ lat: number; lng: number }>
       if (pointsRef.current.length === 0) return
       const p = pointsRef.current[0]
-      p.setLat(parseFloat(ce.detail.lat.toFixed(6)))
-      p.setLng(parseFloat(ce.detail.lng.toFixed(6)))
+      p.setLat(parseFloat(ce.detail.lat.toFixed(mapDefaults.latLngPrecision)))
+      p.setLng(parseFloat(ce.detail.lng.toFixed(mapDefaults.latLngPrecision)))
     }
     window.addEventListener('mapdblclick', handler)
     return () => window.removeEventListener('mapdblclick', handler)

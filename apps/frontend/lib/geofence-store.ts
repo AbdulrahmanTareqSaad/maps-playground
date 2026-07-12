@@ -1,3 +1,8 @@
+/**
+ * In-memory geofence zone store with CRUD operations and point-in-polygon
+ * hit-testing. Manages named polygon zones used by the geofencing feature.
+ * Exports: createZone, listZones, deleteZone, checkPoint
+ */
 import { GeofenceZone, LatLng } from '@/types'
 import { nanoid } from 'nanoid'
 

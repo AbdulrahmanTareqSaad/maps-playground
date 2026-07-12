@@ -1,3 +1,10 @@
+/**
+ * Shared TypeScript interfaces for the MapsPlayground frontend — covers
+ * map coordinates, tracker state, geofence zones, draggable pins, and
+ * API response shapes for OSM and routing results.
+ * Exports: LatLng, Tracker, GeofenceZone, DraggablePoint, OsmResult,
+ *          RoutingResult
+ */
 export interface LatLng {
   lat: number
   lng: number

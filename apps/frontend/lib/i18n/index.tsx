@@ -1,3 +1,9 @@
+/**
+ * React i18n context provider supporting English and Arabic. Supplies a
+ * dot-path translation helper (t), language toggle, and text-direction
+ * state consumed by all UI components.
+ * Exports: LangProvider, useTranslation, Lang (type)
+ */
 'use client'
 
 import { createContext, useContext, useState, useCallback, type ReactNode } from 'react'

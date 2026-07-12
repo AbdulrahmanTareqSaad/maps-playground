@@ -1,3 +1,9 @@
+/**
+ * POST /api/routing/isochrone
+ * Proxies an isochrone request to the OpenRouteService Isochrones API.
+ * Body params: lat, lng (required), range (minutes), profile.
+ * Requires ORS_API_KEY env var. Returns: GeoJSON isochrone polygons.
+ */
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(req: NextRequest) {

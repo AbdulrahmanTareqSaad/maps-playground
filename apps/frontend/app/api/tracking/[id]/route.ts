@@ -1,3 +1,8 @@
+/**
+ * GET  /api/tracking/[id] — Retrieves a single tracker by ID from the in-memory store.
+ * DELETE /api/tracking/[id] — Removes a tracker by ID from the in-memory store.
+ * Params: id (path). Returns: tracker object or { ok: true } on deletion.
+ */
 import { NextRequest, NextResponse } from 'next/server'
 import { getTracker, removeTracker } from '@/lib/tracking-store'
 

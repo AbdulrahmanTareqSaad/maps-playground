@@ -4,7 +4,7 @@ import Providers from '@/components/Providers'
 import LangHtml from '@/components/LangHtml'
 
 export const metadata: Metadata = {
-  title: 'MapMaster',
+  title: 'MapsLap',
   description: 'Interactive map playground with OSM, routing, tracking, geofencing',
 }
 

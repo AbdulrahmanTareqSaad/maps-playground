@@ -1,13 +1,27 @@
+/**
+ * Arabic translation dictionary for all UI strings, typed against the
+ * English Translations interface to ensure completeness.
+ * Exports: ar (default)
+ */
 import type { Translations } from './en'
 
 const ar: Translations = {
   app: {
-    title: 'MapMaster',
+    title: 'MapsLap',
     loading: 'جارٍ التحميل…',
     clicked: 'تم النقر:',
+    clickHint: 'انقر على الخريطة لرؤية الإحداثيات',
+    description: 'ملعب خرائط تفاعلي',
+  },
+  startup: {
+    enableGPS: 'فعّل خدمات الموقع لتجربة أفضل',
+    allowLocation: 'السماح بالموقع',
+    skip: 'تخطي مؤقتاً',
+    locationGranted: 'تم تفعيل الموقع',
+    locationSkipped: 'المتابعة بدون موقع',
   },
   nav: {
-    osm: 'مستكشف OSM',
+    osm: 'مستكشف الخرائط',
     routing: 'توجيه',
     tracking: 'تتبع مباشر',
     geofence: 'سياج جغرافي',
@@ -15,12 +29,13 @@ const ar: Translations = {
     lang: 'العربية',
   },
   osm: {
-    title: 'مستكشف OSM',
+    title: 'مستكشف الخرائط',
     desc: 'ابحث عن المرافق القريبة (مقاهي، محطات وقود، مواقف سيارات، إلخ) حول موقع معين باستخدام Overpass API من OpenStreetMap. انقر على الخريطة أو اسحب نقطة البحث.',
     location: 'الموقع',
     useClicked: '(استخدم الموقع المحدد)',
     radius: 'نصف القطر ({n} كم)',
     amenity: 'المنشأة',
+    none: 'بدون (موقع فقط)',
     cafes: 'مقاهي ومطاعم',
     fuel: 'محطات وقود',
     parking: 'مواقف سيارات',
@@ -40,6 +55,8 @@ const ar: Translations = {
     searchPlaceholder: 'ابحث عن موقع…',
     searchLocation: 'ابحث عن موقع',
     noGeocodeResults: 'لم يتم العثور على نتائج',
+    gpsEnabled: 'تم تفعيل الموقع',
+    gpsDenied: 'تم رفض الوصول للموقع',
   },
   routing: {
     title: 'ملعب التوجيه',
@@ -100,10 +117,16 @@ const ar: Translations = {
 
   styles: {
     title: 'أنماط الخريطة',
-    desc: 'تبديل بين طبقات التجانب النقطية (OSM، Carto، Hydda) ومعاينات المتجهات (Mapbox). الخرائط المجانية لا تتطلب رمزاً — أنماط Mapbox تحتاج إلى إضافة ورمز API.',
+    desc: 'تبديل بين طبقات التجانب النقطية المجانية. انقر على نمط لتطبيقه.',
     clickToApply: 'انقر على نمط لتطبيقه.',
-    free: 'مجاني',
-    token: 'رمز',
+  },
+  voice: {
+    start: 'بدء التسجيل',
+    stop: 'إيقاف التسجيل',
+    transcribing: 'جارٍ التحويل…',
+    error: 'فشل الإدخال الصوتي',
+    whisper: 'Whisper',
+    cohere: 'Cohere',
   },
 }
 

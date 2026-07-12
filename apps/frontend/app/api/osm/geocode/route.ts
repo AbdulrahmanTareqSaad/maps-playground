@@ -1,3 +1,9 @@
+/**
+ * GET /api/osm/geocode
+ * Proxies a geocoding request to the Nominatim (OpenStreetMap) search API.
+ * Query params: q (required), limit, lat, lng (optional bias coordinates).
+ * Returns: { results: Array<{ lat, lon, displayName, type, category }> }
+ */
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(req: NextRequest) {
@@ -8,8 +14,20 @@ export async function GET(req: NextRequest) {
   }
   const limit = Math.min(parseInt(searchParams.get('limit') || '5', 10), 10)
 
+  let url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(q)}&limit=${limit}`
+
+  const biasLat = searchParams.get('lat')
+  const biasLng = searchParams.get('lng')
+  if (biasLat && biasLng) {
+    const lat = parseFloat(biasLat)
+    const lng = parseFloat(biasLng)
+    if (!isNaN(lat) && !isNaN(lng)) {
+      const d = 0.5
+      url += `&viewbox=${lng - d},${lat - d},${lng + d},${lat + d}&bounded=0`
+    }
+  }
+
   try {
-    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(q)}&limit=${limit}`
     const resp = await fetch(url, {
       headers: {
         'User-Agent': 'MapMaster/1.0',

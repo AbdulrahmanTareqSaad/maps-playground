@@ -1,3 +1,9 @@
+/**
+ * GET /api/tracking/stream/[id]
+ * Opens a Server-Sent Events (SSE) stream that simulates and pushes real-time
+ * position updates for a tracker. Emits events: position, history, arrived, tracker_error.
+ * Params: id (path). Returns: a ReadableStream of SSE messages.
+ */
 import { NextRequest } from 'next/server'
 import { getTracker, simulateStep } from '@/lib/tracking-store'
 

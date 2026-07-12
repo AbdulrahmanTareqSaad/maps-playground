@@ -1,3 +1,8 @@
+/**
+ * POST /api/geofence/check
+ * Checks whether a given point falls inside any stored geofence zones.
+ * Body params: lat, lng (required). Returns: containment result with matching zone info.
+ */
 import { NextRequest, NextResponse } from 'next/server'
 import { checkPoint } from '@/lib/geofence-store'
 

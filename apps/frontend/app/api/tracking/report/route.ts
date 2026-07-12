@@ -1,3 +1,9 @@
+/**
+ * POST /api/tracking/report
+ * Reports a new GPS position for an existing tracker (authenticated via API token).
+ * Body params: tracker_id, api_token, lat, lng (all required).
+ * Returns: { ok: true, arrived: boolean } or 403 on invalid credentials.
+ */
 import { NextRequest, NextResponse } from 'next/server'
 import { reportPosition } from '@/lib/tracking-store'
 

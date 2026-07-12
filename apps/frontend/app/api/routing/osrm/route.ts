@@ -1,3 +1,8 @@
+/**
+ * GET /api/routing/osrm
+ * Proxies a directions request to the public OSRM demo server.
+ * Query params: start, end (lat,lng). Returns: OSRM route JSON with GeoJSON geometry.
+ */
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(req: NextRequest) {

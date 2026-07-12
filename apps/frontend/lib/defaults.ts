@@ -1,3 +1,9 @@
+/**
+ * Default map point coordinates read from environment variables with
+ * fallback values (Dubai area). Used to initialize routing/driving
+ * start and destination pins.
+ * Exports: POINT1, POINT2
+ */
 export const POINT1 = {
   lat: parseFloat(process.env.NEXT_PUBLIC_POINT1_LAT || '25.2048'),
   lng: parseFloat(process.env.NEXT_PUBLIC_POINT1_LNG || '55.2708'),

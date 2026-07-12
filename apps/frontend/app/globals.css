@@ -118,3 +118,21 @@ input[type="range"]::-moz-range-thumb {
 .slide-in { animation: slide-in 0.4s ease-out both; }
 .delay-1 { animation-delay: 0.05s; }
 .delay-2 { animation-delay: 0.1s; }
+
+@keyframes loader-pin-drop {
+  0% { opacity: 0; transform: translateY(-60px) scale(0.7); }
+  50% { opacity: 1; transform: translateY(6px) scale(1.03); }
+  70% { transform: translateY(-3px) scale(0.98); }
+  85% { transform: translateY(1px) scale(1.01); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes loader-shadow {
+  0% { opacity: 0; transform: translateX(-50%) scale(0.4); }
+  50% { opacity: 0.6; transform: translateX(-50%) scale(1.15); }
+  70% { transform: translateX(-50%) scale(0.95); }
+  100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+}
+@keyframes loader-ripple {
+  0% { transform: scale(0.3); opacity: 0.6; }
+  100% { transform: scale(1.8); opacity: 0; }
+}

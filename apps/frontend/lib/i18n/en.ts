@@ -1,11 +1,25 @@
+/**
+ * English translation dictionary for all UI strings. Also exports the
+ * Translations type used to type-check other locale files.
+ * Exports: en (default), Translations (type)
+ */
 const en = {
   app: {
-    title: 'MapMaster',
+    title: 'MapsLap',
     loading: 'Loading…',
     clicked: 'Clicked:',
+    clickHint: 'Click the map to see coordinates',
+    description: 'Interactive map playground',
+  },
+  startup: {
+    enableGPS: 'Enable location services for a better experience',
+    allowLocation: 'Allow Location',
+    skip: 'Skip for now',
+    locationGranted: 'Location enabled',
+    locationSkipped: 'Continuing without location',
   },
   nav: {
-    osm: 'OSM Explorer',
+    osm: 'Map Explorer',
     routing: 'Routing',
     tracking: 'Live Tracking',
     geofence: 'Geo-fencing',
@@ -13,12 +27,13 @@ const en = {
     lang: 'English',
   },
   osm: {
-    title: 'OSM Explorer',
+    title: 'Map Explorer',
     desc: 'Search for nearby amenities (cafes, fuel, parking, etc.) around a location using OpenStreetMap\'s Overpass API. Click the map or drag the search center pin.',
     location: 'Location',
     useClicked: '(use clicked)',
     radius: 'Radius ({n} km)',
     amenity: 'Amenity',
+    none: 'None (Location only)',
     cafes: 'Cafes & Restaurants',
     fuel: 'Fuel Stations',
     parking: 'Parking',
@@ -38,6 +53,8 @@ const en = {
     searchPlaceholder: 'Search location…',
     searchLocation: 'Search location',
     noGeocodeResults: 'No results found',
+    gpsEnabled: 'Location enabled',
+    gpsDenied: 'Location access denied',
   },
   routing: {
     title: 'Routing Playground',
@@ -98,10 +115,16 @@ const en = {
 
   styles: {
     title: 'Map Styles',
-    desc: 'Switch between raster tile layers (OSM, Carto, Hydda) and vector previews (Mapbox). Free tiles require no token — Mapbox styles need a plugin and API key.',
+    desc: 'Switch between free raster tile layers. Click a style to apply it.',
     clickToApply: 'Click a style to apply it.',
-    free: 'Free',
-    token: 'Token',
+  },
+  voice: {
+    start: 'Start recording',
+    stop: 'Stop recording',
+    transcribing: 'Transcribing…',
+    error: 'Voice input failed',
+    whisper: 'Whisper',
+    cohere: 'Cohere',
   },
 }
 

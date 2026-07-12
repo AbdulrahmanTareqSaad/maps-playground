@@ -1,3 +1,10 @@
+/**
+ * In-memory GPS tracker store that simulates device movement along a
+ * route. Provides CRUD for tracker objects, position reporting, and
+ * haversine-based step simulation for the live tracking feature.
+ * Exports: createTracker, getTracker, listTrackers, reportPosition,
+ *          removeTracker, simulateStep
+ */
 import { Tracker } from '@/types'
 import { nanoid } from 'nanoid'
 

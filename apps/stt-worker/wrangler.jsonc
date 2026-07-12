@@ -1,3 +1,8 @@
+/**
+ * Wrangler configuration for the stt-worker Cloudflare Worker.
+ * Defines the worker name, compatibility settings, TypeScript entry point,
+ * and the Workers AI binding used for on-device speech-to-text inference.
+ */
 {
   "name": "stt-worker",
   "account_id": "f6a568fb2dea392dc82f7a93548e0a89",
