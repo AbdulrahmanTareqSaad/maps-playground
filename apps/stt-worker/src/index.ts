@@ -15,6 +15,15 @@ const app = new Hono<{ Bindings: Bindings }>()
 
 app.use('*', cors())
 
+app.use('*', async (c, next) => {
+  const ip = c.req.header('cf-connecting-ip') || c.req.header('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
+  const country = c.req.header('cf-country') || '-'
+  const method = c.req.method
+  const path = c.req.path
+  console.log(`[request] ip=${ip} country=${country} method=${method} path=${path}`)
+  await next()
+})
+
 app.get('/health', (c) => c.json({ status: 'ok' }))
 
 function detectLanguage(text: string): string {
