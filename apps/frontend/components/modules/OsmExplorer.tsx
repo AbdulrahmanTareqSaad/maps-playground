@@ -136,6 +136,7 @@ export default function OsmExplorer({
         existing.unbindTooltip()
         const label = f.tags?.name || f.tags?.amenity || f.tags?.highway || f.type
         if (label) existing.bindTooltip(label, { direction: 'top', className: 'map-result-tooltip' })
+        if (!map.hasLayer(existing)) existing.addTo(map)
         newMarkers.push(existing)
       } else {
         const marker = L.marker([f.lat, f.lon], { icon: createPinIcon(colors_[i]) }).addTo(map)
@@ -205,9 +206,17 @@ export default function OsmExplorer({
     finally { setGeocodeLoading(false) }
   }
 
-  const handleSelectGeocode = (r: any) => {
+  const handleSelectGeocode = async (r: any) => {
     setLat(r.lat); setLng(r.lon); setSearchQuery(''); setGeocodeResults([])
     getMap()?.flyTo([r.lat, r.lon], 14, { duration: mapDefaults.flyDuration })
+    if (amenity !== 'none') {
+      setResults(null)
+      try {
+        const params = new URLSearchParams({ lat: String(r.lat), lng: String(r.lon), radius_km: String(radius), amenity })
+        if (amenity === 'custom') params.set('custom_query', customQuery)
+        setResults(await (await fetch(`/api/osm/query?${params}`)).json())
+      } catch (e: unknown) { setResults({ error: e instanceof Error ? e.message : 'Failed', count: 0, features: [], bbox: '' }) }
+    }
   }
 
   useEffect(() => { return () => { if (geocodeTimerRef.current) clearTimeout(geocodeTimerRef.current) } }, [])
@@ -219,6 +228,8 @@ export default function OsmExplorer({
       if (searchQuery.trim().length >= 2) {
         const resp = await fetch(`/api/osm/geocode?${buildGeoParams(searchQuery, '1')}`)
         const data = await resp.json()
+
+        console.log('Geocode response:', data)
         const geoRes = data.results || []
         if (geoRes.length > 0) {
           searchLat = geoRes[0].lat; searchLng = geoRes[0].lon
@@ -252,27 +263,27 @@ export default function OsmExplorer({
             onTranscript={(text) => handleVoiceSearch(text)}
             onError={(err) => console.error('Voice error:', err)}
           />
-        </div>
-        {geocodeResults.length > 0 && (
-          <div style={{
-            position: 'absolute', top: '100%', left: 0, right: 0, zIndex: 60,
-            background: colors.bgSecondary, border: `1px solid ${colors.border}`, borderRadius: 6, marginTop: 4,
-            maxHeight: 200, overflowY: 'auto', boxShadow: '0 4px 12px rgba(0,0,0,0.4)',
-          }}>
-            {geocodeResults.map((r: any, i: number) => (
-              <div key={i} onClick={() => handleSelectGeocode(r)}
-                style={{ padding: '8px 10px', cursor: 'pointer', fontSize: 11, color: colors.textPrimary, borderBottom: i < geocodeResults.length - 1 ? `1px solid ${colors.border}` : 'none', transition: 'background 0.15s' }}
-                onMouseEnter={e => e.currentTarget.style.background = colors.accentHoverAlpha}
-                onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
-              >
-                <div style={{ fontWeight: 500, marginBottom: 2 }}>{r.displayName?.split(',')[0]}</div>
-                <div style={{ color: colors.textFaint, fontSize: 10 }}>
-                  {r.lat?.toFixed(4)}, {r.lon?.toFixed(4)} — {r.category}{r.type ? ` / ${r.type}` : ''}
+          {geocodeResults.length > 0 && (
+            <div style={{
+              position: 'absolute', top: '100%', left: 0, right: 0, zIndex: 60,
+              background: colors.bgSecondary, border: `1px solid ${colors.border}`, borderRadius: 6, marginTop: 4,
+              maxHeight: 200, overflowY: 'auto', boxShadow: '0 4px 12px rgba(0,0,0,0.4)',
+            }}>
+              {geocodeResults.map((r: any, i: number) => (
+                <div key={i} onClick={() => handleSelectGeocode(r)}
+                  style={{ padding: '8px 10px', cursor: 'pointer', fontSize: 11, color: colors.textPrimary, borderBottom: i < geocodeResults.length - 1 ? `1px solid ${colors.border}` : 'none', transition: 'background 0.15s' }}
+                  onMouseEnter={e => e.currentTarget.style.background = colors.accentHoverAlpha}
+                  onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+                >
+                  <div style={{ fontWeight: 500, marginBottom: 2 }}>{r.displayName?.split(',')[0]}</div>
+                  <div style={{ color: colors.textFaint, fontSize: 10 }}>
+                    {r.lat?.toFixed(4)}, {r.lon?.toFixed(4)} — {r.category}{r.type ? ` / ${r.type}` : ''}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        )}
+              ))}
+            </div>
+          )}
+        </div>
         {geocodeLoading && <div style={{ color: colors.textFaint, fontSize: 11, marginTop: 4 }}>{t('osm.searching')}</div>}
       </FieldGroup>
 
